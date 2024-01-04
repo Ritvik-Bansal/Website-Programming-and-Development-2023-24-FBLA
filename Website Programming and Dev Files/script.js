@@ -13,19 +13,21 @@ function showTab(tabName) {
     }
 }
 
+// Search bar from index.html uses this function to evaluate locations
+// Filters through job openings data and displays it when pressed
 function searchLocation() {
     const locationInput = document.getElementById('locationInput');
-    const userInput = locationInput.value.trim().toLowerCase(); // Convert input to lowercase
+    const userInput = locationInput.value.trim().toLowerCase();
 
     // List of available locations (convert them to lowercase)
     const locations = ['seattle', 'new delhi', 'edmonton', ];
 
-    // Check if the user input matches one of the predefined locations
+    // Checks if the user input matches one of the predefined locations
     if (locations.includes(userInput)) {
-        // Redirect to job-openings.html with the selected location
+        // Redirects to job-openings.html with the selected location
         window.location.href = 'job-openings.html?location=' + encodeURIComponent(userInput);
     } else {
-        // Show an alert for invalid location
+        // Shows an alert for invalid location
         alert('No jobs available in this location.');
     }
 }

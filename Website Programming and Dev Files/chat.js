@@ -17,20 +17,27 @@
         return chatLi; // return chat <li> element
     }
 
+    // Collects and outputs the TravelGPT AI response
+    // Uses the OpenAI API to train and make the bot to be useful to the app
     const generateResponse = (chatElement) => {
+        // Link for method to fetch response
         const API_URL = "https://api.openai.com/v1/chat/completions";
         const messageElement = chatElement.querySelector("p");
     
+        // Creates constraints for the OpenAI bot
         const requestOptions = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                // Hid OpenAI key, following good computer science convention
                 "Authorization": `Bearer ${getApiKey()}`
             },
             body: JSON.stringify({
-                model: "gpt-3.5-turbo-1106",  // Specify the model
+                // Specific model we are using
+                model: "gpt-3.5-turbo-1106",
+                // Trains the AI that it is the More Travel AI assistant
                 messages: [
-                    { role: "system", content: "You are an AI assistant for More Travel, providing information about job opportunities, travel destinations, and more. In the website in which you are implemented in there is a variety of information from diversity in more travel, culture, hiring tips, testimonials, job-openings, an application, internship opportunities, benefits, and flexible work. Users can ask you about any information regarding these topics and you need to help them out. If you think it would be better to give the creators of the websites emails because we have better responses, Ritvik Bansal: ritvikbansal08@gmail.com. Make sure you don't provide the email to every single person and only provide it if the user asks or if you truely believe you didn't answer the question effectively." },
+                    { role: "system", content: "You are an AI assistant for More Travel, providing information about job opportunities, travel destinations, and more. In the website in which you are implemented in there is a variety of information from diversity in more travel, culture, hiring tips, testimonials, job-openings, an application, internship opportunities, benefits, and flexible work. Users can ask you about any information regarding these topics and you need to help them out. If you think it would be better to give the creators of the websites emails because we have better responses, Ritvik Bansal: ritvikbansal08@gmail.com, Ronak Singh: singhronak2008@gmail.com, Sai Lalith Kanumuri: sailalithkanumuri@gmail.com. Make sure you don't provide the email to every single person and only provide it if the user asks or if you truely believe you didn't answer the question effectively." },
                     { role: "user", content: userMessage }
                 ]
             })
@@ -95,6 +102,6 @@
 
     function getApiKey() {
         // Replace "YOUR_ACTUAL_API_KEY" with your OpenAI API key
-        return "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";
+        return "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";
     }
 })();
